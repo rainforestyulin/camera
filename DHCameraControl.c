@@ -47,7 +47,7 @@ int GX_CC_EnumDevices(GX_CC_DEVICE_INFO_LIST* pstDevList)
     for (size_t i = 0; i < pstDevList->nDeviceNum; ++i)
     {
         pstDevList->pDeviceInfo[i]->deviceIndex = i + 1;
-        size_t base_info_size = 372;
+        size_t base_info_size = sizeof(GX_DEVICE_BASE_INFO);
         status = GXGetAllDeviceBaseInfo(&(pstDevList->pDeviceInfo[i]->stBaseInfo), &base_info_size);
         CHECK_RESULT(status);
         status = GXGetDeviceIPInfo(i, &(pstDevList->pDeviceInfo[i]->stGigEInfo));
@@ -113,5 +113,10 @@ int GX_CC_StopGrabbing(void *handle)
 int GX_CC_GetOneFrameTimeout(void *handle, GX_FRAME_DATA *pFrameData, uint32_t timeOut)
 {
     GX_STATUS status = GXGetImage(handle,pFrameData, timeOut);
+    CHECK_RESULT(status);
+    if(pFrameData->nStatus != GX_FRAME_STATUS_SUCCESS)
+    {
+    	return pFrameData->nStatus;
+    }
     return status;
 }
