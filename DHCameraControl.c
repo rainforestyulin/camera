@@ -50,7 +50,7 @@ int GX_CC_EnumDevices(GX_CC_DEVICE_INFO_LIST* pstDevList)
         size_t base_info_size = sizeof(GX_DEVICE_BASE_INFO);
         status = GXGetAllDeviceBaseInfo(&(pstDevList->pDeviceInfo[i]->stBaseInfo), &base_info_size);
         CHECK_RESULT(status);
-        status = GXGetDeviceIPInfo(i, &(pstDevList->pDeviceInfo[i]->stGigEInfo));
+        status = GXGetDeviceIPInfo(i + 1, &(pstDevList->pDeviceInfo[i]->stGigEInfo));
         CHECK_RESULT(status);
     }
     return status;
