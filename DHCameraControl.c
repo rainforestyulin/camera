@@ -102,7 +102,7 @@ int GX_CC_StartGrabbing(void *handle)
  *
  * @param[in] handle Device Handle
  *
- * @return Success, return GX_STATUS_SUCCESS.Failure return error code
+ * @return Success, return GX_STATUS_SUCCESS.Failure, return error code
  */
 int GX_CC_StopGrabbing(void *handle)
 {
@@ -110,6 +110,16 @@ int GX_CC_StopGrabbing(void *handle)
     return status;
 }
 
+/**
+ * @brief Get One Frame Data In Given Time
+ *
+ * @param[in] handle Device Handle
+ * @param[in] pFrameData A Structure Type Of GX_FRAME_DATA
+ * @param[in] timeOut Given Time
+ *
+ * @return Success, return GX_STATUS_SUCCESS.Failure return error code.
+ *                  Including Frame Status.
+ */
 int GX_CC_GetOneFrameTimeout(void *handle, GX_FRAME_DATA *pFrameData, uint32_t timeOut)
 {
     GX_STATUS status = GXGetImage(handle,pFrameData, timeOut);
@@ -118,5 +128,28 @@ int GX_CC_GetOneFrameTimeout(void *handle, GX_FRAME_DATA *pFrameData, uint32_t t
     {
     	return pFrameData->nStatus;
     }
+    return status;
+}
+
+/**
+ * @brief Set IP Parameters According To MAC
+ *
+ * @param[in] MAC Device MAC  Address
+ * @param[in] IP Const Char* Type Address Which Indicate Device IP Address
+ * @param[in] subnetMask Subnetmask
+ * @param[in] defaultGateWay DefaultGateWay
+ * @param[in] userID UserID Of Net
+ * @param[in] mode IP Configure Mode
+ *
+ * @return Success, return GX_STATUS_SUCCESS.Failure, return error code
+ */
+int GX_CC_IPConfiguration(const char *MAC,
+                          const char *IP,
+                          const char *subnetMask,
+                          const char *defaultGateWay,
+                          const char *userID,
+                          GX_IP_CONFIGURE_MODE mode)
+{
+    GX_STATUS status = GXGigEIpConfiguration(MAC, mode, IP, subnetMask, defaultGateWay, userID);
     return status;
 }

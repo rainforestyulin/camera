@@ -9,6 +9,10 @@ int GX_CC_OpenDevice(void **handle, const GX_CC_DEVICE_INFO *pstDevInfo);
 int GX_CC_StartGrabbing(void *handle);
 int GX_CC_StopGrabbing(void *handle);
 int GX_CC_GetOneFrameTimeout(void *handle, GX_FRAME_DATA *pFrameData, uint32_t timeOut);
-
-
+int GX_CC_IPConfiguration(const char *MAC,
+                          const char *IP,
+                          const char *subnetMask,
+                          const char *defaultGateWay,
+                          const char *userID,
+                          GX_IP_CONFIGURE_MODE mode);
 
