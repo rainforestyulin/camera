@@ -153,3 +153,35 @@ int GX_CC_IPConfiguration(const char *MAC,
     GX_STATUS status = GXGigEIpConfiguration(MAC, mode, IP, subnetMask, defaultGateWay, userID);
     return status;
 }
+
+
+/**
+ * @brief Set Int Type Value
+ *
+ * @param[in] hDevice Device Handle
+ * @param[in] featureID ID Of Feature To Set
+ * @param[in] nValue Feature Value
+ *
+ * @return Success, return GX_STATUS_SUCCESS.Failure, return error code
+ */
+int GX_CC_SetIntValue(void *handle, GX_FEATURE_ID featureID, int64_t nValue)
+{
+    GX_STATUS status = GXSetInt(handle, featureID, nValue);
+    return status;
+}
+
+
+/**
+ * @brief Get Int Type Value
+ *
+ * @param[in] handle Device Handle
+ * @param[in] featureID ID Of Feature To Get
+ * @param[in] pnValue Address To Save Value
+ *
+ * @return Success, return GX_STATUS_SUCCESS.Failure, return error cod
+ */
+int GX_CC_GetInt(void *handle, GX_FEATURE_ID featureID, int64_t *pnValue)
+{
+   GX_STATUS status = GXGetInt(handle, featureID, pnValue);
+   return status;
+}
