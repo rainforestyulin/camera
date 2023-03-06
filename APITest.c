@@ -5,6 +5,12 @@
 
 #define CHECK(x) if(x != 0){printf("Error code:(%d) in (%s) line(%d)\n",x,__FILE__,__LINE__); }
 
+static void OnDeivceOffline(void* pUserParam)
+{
+    printf("device offline\n");
+    return;
+}
+
 void GX_CC_InitLib();
 const char* GX_CC_GetSDKVersion();
 int main()
@@ -25,6 +31,9 @@ int main()
     void *handle;
     res = GX_CC_OpenDevice(&handle,deviceList.pDeviceInfo[0]);
     CHECK(res);
+    GX_EVENT_CALLBACK_HANDLE chandle;
+    res = GX_CC_RegisterDeviceOfflineCallback(handle, NULL, OnDeivceOffline, handle);
+    CHECK(res);
     res = GX_CC_StartGrabbing(handle);
     CHECK(res);
     res = GX_CC_GetOneFrameTimeout(handle,&frameData,10000);
@@ -33,6 +42,7 @@ int main()
     res = GX_CC_GetIntValue(handle,GX_INT_PAYLOAD_SIZE,&val);
     CHECK(res);
     printf("%ld",val);
+
     GX_CC_StopGrabbing(handle);
     GX_CC_CloseDevice(handle);
     free(deviceList.pDeviceInfo[0]);

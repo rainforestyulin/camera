@@ -28,3 +28,14 @@ int GX_CC_SetIntValue(void *handle, GX_FEATURE_ID featureID, int64_t nValue);
 
 int GX_CC_GetIntValue(void *handle, GX_FEATURE_ID featureID, int64_t *pnValue);
 
+int GX_CC_RegisterCaptureCallback(void *handle, void *pUserParam, GXCaptureCallBack callBackFun);
+
+int GX_CC_UnregisterCaptureCallback(void *handle);
+
+int GX_CC_RegisterDeviceOfflineCallback(void *handle,
+                                        void *pUserParam,
+                                        GXDeviceOfflineCallBack callBackFun,
+                                        GX_EVENT_CALLBACK_HANDLE *pHCallBack);
+
+int GX_CC_UnregisterDeviceOfflineCallback(void *handle, GX_EVENT_CALLBACK_HANDLE hCallBack);
+

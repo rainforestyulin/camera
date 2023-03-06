@@ -80,8 +80,7 @@ int GX_CC_OpenDevice(void **handle, const GX_CC_DEVICE_INFO *pstDevInfo)
  */
 int GX_CC_CloseDevice(void *handle)
 {
-    GX_STATUS status = GXCloseDevice(handle);
-    return status;
+    return GXCloseDevice(handle);
 }
 
 /**
@@ -93,8 +92,7 @@ int GX_CC_CloseDevice(void *handle)
  */
 int GX_CC_StartGrabbing(void *handle)
 {
-    GX_STATUS status = GXStreamOn(handle);
-    return status;
+    return GXStreamOn(handle);
 }
 
 /**
@@ -106,8 +104,7 @@ int GX_CC_StartGrabbing(void *handle)
  */
 int GX_CC_StopGrabbing(void *handle)
 {
-    GX_STATUS status = GXStreamOff(handle);
-    return status;
+    return GXStreamOff(handle);
 }
 
 /**
@@ -150,8 +147,7 @@ int GX_CC_IPConfiguration(const char *MAC,
                           const char *userID,
                           GX_IP_CONFIGURE_MODE mode)
 {
-    GX_STATUS status = GXGigEIpConfiguration(MAC, mode, IP, subnetMask, defaultGateWay, userID);
-    return status;
+    return GXGigEIpConfiguration(MAC, mode, IP, subnetMask, defaultGateWay, userID);
 }
 
 
@@ -166,8 +162,7 @@ int GX_CC_IPConfiguration(const char *MAC,
  */
 int GX_CC_SetIntValue(void *handle, GX_FEATURE_ID featureID, int64_t nValue)
 {
-    GX_STATUS status = GXSetInt(handle, featureID, nValue);
-    return status;
+    return GXSetInt(handle, featureID, nValue);
 }
 
 
@@ -182,6 +177,28 @@ int GX_CC_SetIntValue(void *handle, GX_FEATURE_ID featureID, int64_t nValue)
  */
 int GX_CC_GetIntValue(void *handle, GX_FEATURE_ID featureID, int64_t *pnValue)
 {
-   GX_STATUS status = GXGetInt(handle, featureID, pnValue);
-   return status;
+   return GXGetInt(handle, featureID, pnValue);
+}
+
+int GX_CC_RegisterCaptureCallback(void *handle, void *pUserParam, GXCaptureCallBack callBackFun)
+{
+    return GXRegisterCaptureCallback(handle, pUserParam, callBackFun);
+}
+
+int GX_CC_UnregisterCaptureCallback(void *handle)
+{
+    return GXUnregisterCaptureCallback(handle);
+}
+
+int GX_CC_RegisterDeviceOfflineCallback(void *handle,
+                                        void *pUserParam,
+                                        GXDeviceOfflineCallBack callBackFun, 
+                                        GX_EVENT_CALLBACK_HANDLE *pHCallBack)
+{
+    return GXRegisterDeviceOfflineCallback(handle, pUserParam, callBackFun, pHCallBack);
+}
+
+int GX_CC_UnregisterDeviceOfflineCallback(void *handle, GX_EVENT_CALLBACK_HANDLE hCallBack)
+{
+    return GXUnregisterDeviceOfflineCallback(handle, hCallBack);
 }
