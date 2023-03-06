@@ -96,16 +96,16 @@
 //
 typedef struct _GX_CC_DEVICE_INFO_
 {
-    uint32_t deviceIndex;           ///< device index
-    GX_DEVICE_BASE_INFO stBaseInfo; ///< device base information
-    GX_DEVICE_IP_INFO stGigEInfo;   ///< device ip information
+    uint32_t device_index;                ///< device index
+    GX_DEVICE_BASE_INFO device_base_info; ///< device base information
+    GX_DEVICE_IP_INFO device_ip_info;     ///< device ip information
 }GX_CC_DEVICE_INFO;
 
 #define DH_MAX_DEVICE_NUM      256
 typedef struct _DH_CC_DEVICE_INFO_LIST_
 {
-    uint32_t                nDeviceNum;
-    GX_CC_DEVICE_INFO*      pDeviceInfo[DH_MAX_DEVICE_NUM];
+    uint32_t                device_num;
+    GX_CC_DEVICE_INFO*      device_info[DH_MAX_DEVICE_NUM];
 
 }GX_CC_DEVICE_INFO_LIST;
 
