@@ -26,5 +26,5 @@ int GX_CC_IPConfiguration(const char *MAC,
 
 int GX_CC_SetIntValue(void *handle, GX_FEATURE_ID featureID, int64_t nValue);
 
-int GX_CC_GetInt(void *handle, GX_FEATURE_ID featureID, int64_t *pnValue);
+int GX_CC_GetIntValue(void *handle, GX_FEATURE_ID featureID, int64_t *pnValue);
 

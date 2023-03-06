@@ -29,6 +29,10 @@ int main()
     CHECK(res);
     res = GX_CC_GetOneFrameTimeout(handle,&frameData,10000);
     CHECK(res);
+    int64_t val;
+    res = GX_CC_GetIntValue(handle,GX_INT_PAYLOAD_SIZE,&val);
+    CHECK(res);
+    printf("%ld",val);
     GX_CC_StopGrabbing(handle);
     GX_CC_CloseDevice(handle);
     free(deviceList.pDeviceInfo[0]);

@@ -180,7 +180,7 @@ int GX_CC_SetIntValue(void *handle, GX_FEATURE_ID featureID, int64_t nValue)
  *
  * @return Success, return GX_STATUS_SUCCESS.Failure, return error cod
  */
-int GX_CC_GetInt(void *handle, GX_FEATURE_ID featureID, int64_t *pnValue)
+int GX_CC_GetIntValue(void *handle, GX_FEATURE_ID featureID, int64_t *pnValue)
 {
    GX_STATUS status = GXGetInt(handle, featureID, pnValue);
    return status;
