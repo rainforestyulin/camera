@@ -72,10 +72,7 @@ int GX_CC_StartGrabbing(void *handle);
  *
  * @return 成功返回0，错误返回错误码，参见GX_STATUS_LIST
  */
-int GX_CC_StopGrabbing(void *handle)
-{
-    return GXStreamOff(handle);
-}
+int GX_CC_StopGrabbing(void *handle);
 
 /**
  * @brief 获取一帧图像数据, 用户获取到图像数据后应检查图像状态标志是否成功，参见
